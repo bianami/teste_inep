@@ -1,9 +1,27 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import pandas as pd
+import csv
+
+
+
+
+import requests
+
+file_url = 'https://drive.google.com/file/d/1y0nthkF8w9HtDLQH1FI4lZXegsTB91-v/view?usp=share_link'  # Substitua pelo link direto do arquivo no Google Drive
+
+response = requests.get(file_url)
+
+if response.status_code == 200:
+    lines = response.text.split('\n')
+    reader = csv.reader(lines)
+    for row in reader:
+        print(row)  # Exemplo de exibição de cada linha do arquivo CSV
+else:
+    print('Falha ao baixar o arquivo. Verifique o link.')
 
 df2014 = pd.read_csv('MICRODADOS_ENEM_2014_.csv', delimiter=';')
-
+    
 st.set_page_config(
     page_title='Liga DS - Projeto INEP',
     page_icon='🐼'
