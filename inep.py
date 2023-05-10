@@ -2,6 +2,8 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import pandas as pd
 
+df2014 = pd.read_csv('MICRODADOS_ENEM_2014_.csv', delimiter=';')
+
 st.set_page_config(
     page_title='Liga DS - Projeto INEP',
     page_icon='🐼'
